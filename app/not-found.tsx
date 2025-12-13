@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Page Not Found | Note App',
     description:
       'Сторінка не знайдена. Такої сторінки не існує U+0443 Note App.',
-    url: 'https://note-app.example.com/not-found',
+    url: 'https://08-zustand-virid-five.vercel.app/not-found',
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
