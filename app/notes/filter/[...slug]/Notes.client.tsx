@@ -1,5 +1,4 @@
 'use client';
-import NoteForm from '@/components/NoteForm/NoteForm';
 import css from './page.module.css';
 import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
@@ -7,7 +6,6 @@ import SearchBox from '@/components/SearchBox/SearchBox';
 import { fetchNotes } from '@/lib/api';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import Modal from '@/components/Modal/Modal';
 import { useDebouncedCallback } from 'use-debounce';
 import ErrorMessageBox from '@/components/ErrorMessageBox/ErrorMessageBox';
 import Loader from '@/components/Loader/Loader';
@@ -35,11 +33,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
   });
 
   const totalPages = notes?.totalPages ?? 0;
-
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  // const openModal = () => setIsModalOpen(true);
-  // const closeModal = () => setIsModalOpen(false);
 
   const debouncedSearch = useDebouncedCallback((text: string) => {
     setSearchText(text);
@@ -73,11 +66,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
             currentPage={currentPage}
           />
         )}
-        {/* {isModalOpen && (
-          <Modal onCancel={closeModal}>
-            <NoteForm onCancel={closeModal} />
-          </Modal>
-        )} */}
       </header>
       {notes && notes.notes?.length > 0 && <NoteList notes={notes.notes} />}
     </div>
