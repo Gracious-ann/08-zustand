@@ -12,6 +12,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import ErrorMessageBox from '@/components/ErrorMessageBox/ErrorMessageBox';
 import Loader from '@/components/Loader/Loader';
 import { Tag } from '@/types/note';
+import Link from 'next/link';
 
 interface NotesClientProps {
   tag?: Tag;
@@ -35,10 +36,10 @@ const NotesClient = ({ tag }: NotesClientProps) => {
 
   const totalPages = notes?.totalPages ?? 0;
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // const openModal = () => setIsModalOpen(true);
+  // const closeModal = () => setIsModalOpen(false);
 
   const debouncedSearch = useDebouncedCallback((text: string) => {
     setSearchText(text);
@@ -48,12 +49,12 @@ const NotesClient = ({ tag }: NotesClientProps) => {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <button
-          onClick={openModal}
+        <Link
           className={css.button}
+          href='/notes/action/create'
         >
           Create note +
-        </button>
+        </Link>
         {
           <SearchBox
             value={inputValue}
@@ -72,11 +73,11 @@ const NotesClient = ({ tag }: NotesClientProps) => {
             currentPage={currentPage}
           />
         )}
-        {isModalOpen && (
+        {/* {isModalOpen && (
           <Modal onCancel={closeModal}>
             <NoteForm onCancel={closeModal} />
           </Modal>
-        )}
+        )} */}
       </header>
       {notes && notes.notes?.length > 0 && <NoteList notes={notes.notes} />}
     </div>

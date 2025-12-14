@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Page Not Found | Note App',
   description: 'Сторінка не знайдена. Такої сторінки не існує U+0443 Note App.',
+  // url: 'https://08-zustand-virid-five.vercel.app',
   openGraph: {
     title: 'Page Not Found | Note App',
     description:
